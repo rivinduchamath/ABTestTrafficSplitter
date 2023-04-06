@@ -27,7 +27,7 @@ public class RuleController {
     @Autowired
     ResponService getRuleService;
     @GetMapping(value = "${server.servlet.getResponse}")
-    public String getResponse() {
+    public List<String> getResponse() {
         log.info("LOG::Inside the RuleController getRuleById ");
         return getRuleService.getValues();
     }

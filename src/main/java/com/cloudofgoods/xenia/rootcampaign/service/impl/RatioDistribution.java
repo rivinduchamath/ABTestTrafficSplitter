@@ -5,25 +5,27 @@ import com.cloudofgoods.xenia.rootcampaign.service.ResponService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 @Service
 public class RatioDistribution implements ResponService {
 
-    public String getValues() {
+    public List<String> getValues() {
         List<RatioGroup> ratioGroups = calcValues();
+        List<String> userData = new ArrayList<>();
         for (int i = 1; i < 101; i++) {
-            userData(ratioGroups);
+            String s = userData(ratioGroups);
+            userData.add(s);
         }
-        return "";
+        return userData;
     }
 
     public List<RatioGroup> calcValues() {
         List<AbTestDTO> abTestDTOList = new ArrayList<>();
         abTestDTOList.add(new AbTestDTO( "varOne","slotOne", 60));
-        abTestDTOList.add(new AbTestDTO( "varTwo","sloTwo", 40));
+        abTestDTOList.add(new AbTestDTO( "varTwo","sloTwo", 20));
+        abTestDTOList.add(new AbTestDTO( "varThree","sloThree", 20));
         double maxPercentage = abTestDTOList.stream().mapToDouble(AbTestDTO::getPersentage).filter(abTestDTO -> abTestDTO >= 0.0).max().orElse(0.0);
         List<Double> normalizedRatioList = new ArrayList<>();
         for (AbTestDTO abTestDTO : abTestDTOList) {
@@ -41,7 +43,7 @@ public class RatioDistribution implements ResponService {
         return ratioGroupList;
     }
 
-    void userData(List<RatioGroup> ratioGroupList) {
+    String userData(List<RatioGroup> ratioGroupList) {
 
         RatioGroup selectedGroup = null;
         for (RatioGroup ratioGroup : ratioGroupList) {
@@ -70,7 +72,13 @@ public class RatioDistribution implements ResponService {
                 }
             }
         }
-        System.out.println("USER : " + "user" + "\tGROUP : " + (targetGroupIndex + 1) + "\tUSER_COUNT : " + ratioGroupList.get(targetGroupIndex).userCount + "\tRATIO : " + ratioGroupList.get(targetGroupIndex).ratio + "\tU/C : " + ratioGroupList.get(targetGroupIndex).userCount + "\tR/B : " + ratioGroupList.get(targetGroupIndex).remainingBalance + "\tR/C/B : " + ratioGroupList.get(targetGroupIndex).remainCollectedBalance);
+        return ("USER : " + "user" +
+                "\tGROUP : " + (targetGroupIndex + 1) +
+                "\tUSER_COUNT : " + ratioGroupList.get(targetGroupIndex).userCount +
+                "\tRATIO : " + ratioGroupList.get(targetGroupIndex).ratio +
+                "\tU/C : " + ratioGroupList.get(targetGroupIndex).userCount +
+                "\tR/B : " + ratioGroupList.get(targetGroupIndex).remainingBalance +
+                "\tR/C/B : " + ratioGroupList.get(targetGroupIndex).remainCollectedBalance);
     }
 
     static class RatioGroup {
