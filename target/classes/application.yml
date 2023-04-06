@@ -1,84 +1,9 @@
-#cloudOfGoods:
-#  redis:
-#    host: xenia.redis.cache.windows.net
-#    host: localhost
-#    port: 6379
-#    password: bmiAFSTWQXka8sFRti7d54Q5n8ynTH3aVAzCaClEDnc=
-#    timeout:
-#      organization: 600
-
-
-knowledge:
-  package:
-    name: com.cloudofgoods.xenia
-
 server:
-  port: 3010
+  port: 3011
   servlet:
     contextPath: /api/xenia
-#    CampaignTemplateController
-    templateSave: /template/save
-    getPagination: /template/get/pagination
-    deleteTemplate: /template/delete
-    getCampaign: /get/single
-    activeInactiveTemplateTable: /template/status
-#    D6nController
-    generateVariant: /variant
-#    InitialPageController
-    getCampaignsForInitialPageWithPagination: /get/campaigns
-    saveTemplate: /save
-    getAllTemplateWithPagination: /get/pagination
-    getAllTemplates: /all/get
-    getSegment: /get/single
-    activeInactiveSegmentTable: /status
-    getTemplateById: /get
-    deleteTemplateById: /delete
-#    RuleController
-    saveRule: /save
-    updateRule: /update
-    updateCampaignStatus: /status/update
-    deleteCampaignWithAllSegments: /delete
-    getCampaignById: /campaign/get
     getResponse: /campaign/response
-#    OrganizationController
-    saveOrganization: /save
-    getOrganization: /get
-#    CustomerController
-    saveUser: /save
-    password: /password
-#    AttributesController
-    saveAttributes: /save
-    getAttributes: /get/all
-    activeInactiveAttribute: /status
-    getSingleAttribute: /get/single
-#    saveAttributesTable
-    saveOrUpdateAttributeTable: /save
-    getAttributesTable: /get/all
-    activeInactiveAttributeTable: /status
-    getSingleAttributeTable: /get/single
-#    ChannelsController
-    saveChannels: /save
-    getChannels: /get/all
-    deleteChannels: /status
-    getSingleChannelTable: /get/single
-#    Audience Controller
-    saveAudience: /save
-    getAudience: /get/single
-    getAudienceWithPagination: /get/all
-    activeInactiveAudience: /status
-    deleteAudience: /delete
-#   LoginController
-    authorizeUser: /authorize
-#    DashboardController
-    organizationDataDashboard: /organization/get
-    campaignPerformance: /campaign/get
-    getRequestData: /campaign/get/request/data
-    campaignsDataCounts: /campaign/get/count
-#    Tags Controller
-    saveTags: /save
-    getTags: /get
-    activeInactiveTags: /status
-    getSingleTag: /get/single
+
 
 spring:
   data:
@@ -88,8 +13,3 @@ spring:
       auto-index-creation: true
   application:
     name: XENIA-SERVICE
-
-  # Cors Allow(White List)..
-allow:
-  headers: ChannelContentObject-Type,Authorization,*
-  origin: https://www.cloudofgoods.com,http://localhost:3000,https://app.contentful.com,*
