@@ -13,3 +13,6 @@ spring:
       auto-index-creation: true
   application:
     name: XENIA-SERVICE
+
+
+# GET http://localhost:3011/api/xenia/d6n/campaign/campaign/response

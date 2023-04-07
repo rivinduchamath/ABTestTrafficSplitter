@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -29,6 +30,11 @@ public class RuleController {
     @GetMapping(value = "${server.servlet.getResponse}")
     public List<String> getResponse() {
         log.info("LOG::Inside the RuleController getRuleById ");
-        return getRuleService.getValues();
+     List<String>  strings = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String values = getRuleService.getValues();
+            strings.add(values);
+        }
+         return strings;
     }
 }
